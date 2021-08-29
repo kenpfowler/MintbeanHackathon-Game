@@ -27,22 +27,21 @@ var scenes;
         // private methods
         // public methods
         Play.prototype.Start = function () {
-            this._cloudNum = 3;
-            this._ocean = new objects.Space();
-            this._island = new objects.Island();
+            this._asteroidNum = 3;
+            this._space = new objects.Space();
             this._enemy = new objects.Enemy();
             this._player = new objects.Player();
             managers.Game.player = this._player;
-            // Instantiates a new Array container of Type objects.Cloud
-            this._clouds = new Array();
-            // Fill the Cloud Array with Clouds
-            for (var count = 0; count < this._cloudNum; count++) {
-                this._clouds[count] = new objects.Cloud();
+            // Instantiates a new Array container of Type objects.Asteroid
+            this._asteroids = new Array();
+            // Fill the asteroid Array with asteroids
+            for (var count = 0; count < this._asteroidNum; count++) {
+                this._asteroids[count] = new objects.Asteroid();
             }
             // play background engine sound when the level starts
-            this._engineSound = createjs.Sound.play("engineSound");
-            this._engineSound.volume = 0.1;
-            this._engineSound.loop = -1; // loop forever
+            this._level1Music = createjs.Sound.play("level1Music");
+            this._level1Music.volume = 0.1;
+            this._level1Music.loop = -1; // loop forever
             // instantiates a new bullet manager
             this._bulletManager = new managers.Bullet();
             managers.Game.bulletManager = this._bulletManager;
@@ -60,15 +59,13 @@ var scenes;
                 createjs.Ticker.getTicks() % 7 == 0) {
                 managers.Game.bulletManager.FireBullet(managers.Game.player.BulletSpawn, util.Vector2.up());
             }
-            this._ocean.Update();
+            this._space.Update();
             this._player.Update();
-            this._island.Update();
             // check if player and island are colliding
-            managers.Collision.Check(this._player, this._island.Coin);
-            // Update Each cloud in the Cloud Array
-            this._clouds.forEach(function (cloud) {
-                cloud.Update();
-                managers.Collision.Check(_this._player, cloud);
+            // Update Each asteroid in the asteroid Array
+            this._asteroids.forEach(function (asteroid) {
+                asteroid.Update();
+                managers.Collision.Check(_this._player, asteroid);
             });
             this._enemy.Update();
             managers.Collision.Check(this._player, this._enemy);
@@ -80,17 +77,15 @@ var scenes;
         };
         Play.prototype.Destroy = function () {
             this.removeAllChildren();
-            this._engineSound.stop();
+            this._level1Music.stop();
             // this.off("mousedown", managers.Input.OnLeftMouseDown);
         };
         Play.prototype.Reset = function () { };
         Play.prototype.Main = function () {
             var _this = this;
             // adds ocean to the scene
-            this.addChild(this._ocean);
+            this.addChild(this._space);
             // adds island to the scene
-            this.addChild(this._island);
-            this.addChild(this._island.Coin);
             this.addChild(this._enemy);
             // adds player to the scene
             this.addChild(this._player);
@@ -98,9 +93,9 @@ var scenes;
             this._bulletManager.Bullets.forEach(function (bullet) {
                 _this.addChild(bullet);
             });
-            // adds Each Cloud in the Cloud Array to the Scene
-            this._clouds.forEach(function (cloud) {
-                _this.addChild(cloud);
+            // adds Each asteroid in the asteroid Array to the Scene
+            this._asteroids.forEach(function (asteroid) {
+                _this.addChild(asteroid);
             });
             // add ScoreBoard UI to the Scene
             managers.Game.scoreBoard.AddGameUI(this);

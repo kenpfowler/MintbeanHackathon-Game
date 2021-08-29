@@ -2,15 +2,14 @@ namespace scenes {
   export class Play extends objects.Scene {
     // private instance variable
     private _player: objects.Player;
-    private _ocean: objects.Space;
-    private _island: objects.Island;
+    private _space: objects.Space;
 
-    private _cloudNum: number;
-    private _clouds: objects.Cloud[];
+    private _asteroidNum: number;
+    private _asteroids: objects.Asteroid[];
 
     private _enemy: objects.Enemy;
 
-    private _engineSound: createjs.AbstractSoundInstance;
+    private _level1Music: createjs.AbstractSoundInstance;
 
     private _bulletManager: managers.Bullet;
 
@@ -30,29 +29,27 @@ namespace scenes {
     // public methods
 
     public Start(): void {
-      this._cloudNum = 3;
+      this._asteroidNum = 3;
 
-      this._ocean = new objects.Space();
-
-      this._island = new objects.Island();
+      this._space = new objects.Space();
 
       this._enemy = new objects.Enemy();
 
       this._player = new objects.Player();
       managers.Game.player = this._player;
 
-      // Instantiates a new Array container of Type objects.Cloud
-      this._clouds = new Array<objects.Cloud>();
+      // Instantiates a new Array container of Type objects.Asteroid
+      this._asteroids = new Array<objects.Asteroid>();
 
-      // Fill the Cloud Array with Clouds
-      for (let count = 0; count < this._cloudNum; count++) {
-        this._clouds[count] = new objects.Cloud();
+      // Fill the asteroid Array with asteroids
+      for (let count = 0; count < this._asteroidNum; count++) {
+        this._asteroids[count] = new objects.Asteroid();
       }
 
       // play background engine sound when the level starts
-      this._engineSound = createjs.Sound.play("engineSound");
-      this._engineSound.volume = 0.1;
-      this._engineSound.loop = -1; // loop forever
+      this._level1Music = createjs.Sound.play("level1Music");
+      this._level1Music.volume = 0.1;
+      this._level1Music.loop = -1; // loop forever
 
       // instantiates a new bullet manager
       this._bulletManager = new managers.Bullet();
@@ -80,17 +77,15 @@ namespace scenes {
         );
       }
 
-      this._ocean.Update();
+      this._space.Update();
       this._player.Update();
-      this._island.Update();
 
       // check if player and island are colliding
-      managers.Collision.Check(this._player, this._island.Coin);
 
-      // Update Each cloud in the Cloud Array
-      this._clouds.forEach((cloud) => {
-        cloud.Update();
-        managers.Collision.Check(this._player, cloud);
+      // Update Each asteroid in the asteroid Array
+      this._asteroids.forEach((asteroid) => {
+        asteroid.Update();
+        managers.Collision.Check(this._player, asteroid);
       });
 
       this._enemy.Update();
@@ -105,7 +100,7 @@ namespace scenes {
 
     public Destroy(): void {
       this.removeAllChildren();
-      this._engineSound.stop();
+      this._level1Music.stop();
       // this.off("mousedown", managers.Input.OnLeftMouseDown);
     }
 
@@ -113,11 +108,9 @@ namespace scenes {
 
     public Main(): void {
       // adds ocean to the scene
-      this.addChild(this._ocean);
+      this.addChild(this._space);
 
       // adds island to the scene
-      this.addChild(this._island);
-      this.addChild(this._island.Coin);
 
       this.addChild(this._enemy);
 
@@ -129,9 +122,9 @@ namespace scenes {
         this.addChild(bullet);
       });
 
-      // adds Each Cloud in the Cloud Array to the Scene
-      this._clouds.forEach((cloud) => {
-        this.addChild(cloud);
+      // adds Each asteroid in the asteroid Array to the Scene
+      this._asteroids.forEach((asteroid) => {
+        this.addChild(asteroid);
       });
 
       // add ScoreBoard UI to the Scene
