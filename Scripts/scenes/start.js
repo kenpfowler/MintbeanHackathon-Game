@@ -28,7 +28,7 @@ var scenes;
         // public methods
         Start.prototype.Start = function () {
             this._ocean = new objects.Space();
-            this._welcomeLabel = new objects.Label("Mail Pilot", "60px", "Dock51", "#FFFF00", 320, 240, true);
+            this._welcomeLabel = new objects.Label("Voyager", "60px", "Dock51", "#FFFF00", 320, 240, true);
             this._startButton = new objects.Button("startButton", 320, 360, true);
             this.Main();
         };

@@ -21,7 +21,7 @@ module scenes {
     public Start(): void {
       this._ocean = new objects.Space();
       this._welcomeLabel = new objects.Label(
-        "Mail Pilot",
+        "Voyager",
         "60px",
         "Dock51",
         "#FFFF00",
