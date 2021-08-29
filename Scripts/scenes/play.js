@@ -28,7 +28,7 @@ var scenes;
         // public methods
         Play.prototype.Start = function () {
             this._cloudNum = 3;
-            this._ocean = new objects.Ocean();
+            this._ocean = new objects.Space();
             this._island = new objects.Island();
             this._enemy = new objects.Enemy();
             this._player = new objects.Player();

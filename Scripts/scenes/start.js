@@ -27,7 +27,7 @@ var scenes;
         // private methods
         // public methods
         Start.prototype.Start = function () {
-            this._ocean = new objects.Ocean();
+            this._ocean = new objects.Space();
             this._welcomeLabel = new objects.Label("Mail Pilot", "60px", "Dock51", "#FFFF00", 320, 240, true);
             this._startButton = new objects.Button("startButton", 320, 360, true);
             this.Main();
@@ -38,8 +38,7 @@ var scenes;
         Start.prototype.Destroy = function () {
             this.removeAllChildren();
         };
-        Start.prototype.Reset = function () {
-        };
+        Start.prototype.Reset = function () { };
         Start.prototype.Main = function () {
             // adds ocean to the stage
             this.addChild(this._ocean);

@@ -9,13 +9,8 @@
     var scoreBoard;
     var textureMap;
     var assetManifest = [
-        { id: "ocean", src: "./Assets/images/ocean.gif" },
+        { id: "space", src: "./Assets/images/space.png" },
         { id: "textureMap", src: "./Assets/sprites/texturemap.png" },
-        { id: "engineSound", src: "./Assets/audio/engine.ogg" },
-        { id: "thunderSound", src: "./Assets/audio/thunder.ogg" },
-        { id: "yaySound", src: "./Assets/audio/yay.ogg" },
-        { id: "bulletSound", src: "./Assets/audio/bullet.mp3" },
-        { id: "explosionSound", src: "./Assets/audio/explosion.mp3" },
     ];
     function Init() {
         assetManager = new createjs.LoadQueue();

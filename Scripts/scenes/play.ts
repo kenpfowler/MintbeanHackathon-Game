@@ -2,7 +2,7 @@ namespace scenes {
   export class Play extends objects.Scene {
     // private instance variable
     private _player: objects.Player;
-    private _ocean: objects.Ocean;
+    private _ocean: objects.Space;
     private _island: objects.Island;
 
     private _cloudNum: number;
@@ -32,7 +32,7 @@ namespace scenes {
     public Start(): void {
       this._cloudNum = 3;
 
-      this._ocean = new objects.Ocean();
+      this._ocean = new objects.Space();
 
       this._island = new objects.Island();
 

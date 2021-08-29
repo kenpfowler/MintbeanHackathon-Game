@@ -2,7 +2,7 @@ namespace scenes {
   export class Over extends objects.Scene {
     // private instance variable
     private _gameOverLabel: objects.Label;
-    private _ocean: objects.Ocean;
+    private _ocean: objects.Space;
     private _restartButton: objects.Button;
 
     // public properties
@@ -19,8 +19,7 @@ namespace scenes {
     // public methods
 
     public Start(): void {
-
-      this._ocean = new objects.Ocean();
+      this._ocean = new objects.Space();
       this._gameOverLabel = new objects.Label(
         "Game Over",
         "60px",
@@ -54,7 +53,7 @@ namespace scenes {
 
       this.addChild(this._restartButton);
 
-      this._restartButton.on("click", function() {
+      this._restartButton.on("click", function () {
         managers.Game.currentState = config.Scene.PLAY;
         managers.Game.scoreBoard.Reset();
       });
