@@ -29,7 +29,7 @@ var scenes;
         Over.prototype.Start = function () {
             this._ocean = new objects.Space();
             this._gameOverLabel = new objects.Label("Game Over", "60px", "Dock51", "#FFFF00", 320, 240, true);
-            this._restartButton = new objects.Button("restartButton", 320, 360, true);
+            this._restartButton = new objects.Button("resetButton", 320, 360, true);
             this.Main();
         };
         Over.prototype.Update = function () {

@@ -41,7 +41,7 @@ var objects;
         };
         Space.prototype.Start = function () {
             this.Reset();
-            this.verticalSpeed = 0.5; // 5 px per frame
+            this.verticalSpeed = 0.3; // 0.1 px per frame
         };
         Space.prototype.Update = function () {
             this._move();

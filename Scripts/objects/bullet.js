@@ -19,7 +19,7 @@ var objects;
         __extends(Bullet, _super);
         // Constructors
         function Bullet() {
-            var _this = _super.call(this, "bullet") || this;
+            var _this = _super.call(this, "phaser") || this;
             _this.Start();
             return _this;
         }
@@ -56,7 +56,7 @@ var objects;
             this.y = this.Position.y;
         };
         Bullet.prototype._checkBounds = function () {
-            if ((this.y > (480 + this.HalfHeight)) || (this.y < -this.HalfHeight)) {
+            if (this.y > 480 + this.HalfHeight || this.y < -this.HalfHeight) {
                 this.IsInPlay = false;
                 this.Reset();
             }
@@ -78,8 +78,7 @@ var objects;
                 this._checkBounds();
             }
         };
-        Bullet.prototype.Destroy = function () {
-        };
+        Bullet.prototype.Destroy = function () { };
         return Bullet;
     }(objects.SpriteGameObject));
     objects.Bullet = Bullet;

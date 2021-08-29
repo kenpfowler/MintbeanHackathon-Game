@@ -33,7 +33,7 @@ module objects {
 
     public Start(): void {
       this.Reset();
-      this.verticalSpeed = 0.5; // 5 px per frame
+      this.verticalSpeed = 0.3; // 0.1 px per frame
     }
 
     public Update(): void {

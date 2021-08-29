@@ -29,7 +29,7 @@ namespace scenes {
         240,
         true
       );
-      this._restartButton = new objects.Button("restartButton", 320, 360, true);
+      this._restartButton = new objects.Button("resetButton", 320, 360, true);
 
       this.Main();
     }

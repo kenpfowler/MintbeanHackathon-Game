@@ -22,14 +22,14 @@ var managers;
                             managers.Game.scoreBoard.Score += 100;
                             object2.alpha = 0;
                             break;
-                        case "cloud":
-                            var thunderSound = createjs.Sound.play("thunderSound");
+                        case "asteroid":
+                            var thunderSound = createjs.Sound.play("explosionSound");
                             thunderSound.volume = 0.1;
                             managers.Game.scoreBoard.Lives -= 1;
                             Collision.createExplosion(object1);
                             break;
                         case "enemy":
-                            if (object1.name == "bullet") {
+                            if (object1.name == "phaser") {
                                 var explosionSound_1 = createjs.Sound.play("explosionSound");
                                 explosionSound_1.volume = 0.1;
                                 managers.Game.scoreBoard.Score += 100;
@@ -45,7 +45,7 @@ var managers;
                                 Collision.createExplosion(object1);
                             }
                             break;
-                        case "bullet":
+                        case "phaser":
                             var explosionSound = createjs.Sound.play("explosionSound");
                             explosionSound.volume = 0.1;
                             managers.Game.scoreBoard.Lives -= 1;
@@ -55,8 +55,10 @@ var managers;
                     }
                     if (managers.Game.scoreBoard.Lives <= 0) {
                         managers.Game.currentState = config.Scene.OVER;
-                        if (managers.Game.scoreBoard.HighScore <= managers.Game.scoreBoard.Score) {
-                            managers.Game.scoreBoard.HighScore = managers.Game.scoreBoard.Score;
+                        if (managers.Game.scoreBoard.HighScore <=
+                            managers.Game.scoreBoard.Score) {
+                            managers.Game.scoreBoard.HighScore =
+                                managers.Game.scoreBoard.Score;
                         }
                     }
                 }
