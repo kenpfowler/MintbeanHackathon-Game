@@ -67,6 +67,8 @@ var managers;
                 this._currentBulletIndex = 0;
             }
             this.CurrentBullet = this.Bullets[this._currentBulletIndex];
+            var firePhaser = createjs.Sound.play("firePhaser");
+            firePhaser.volume = 0.1;
         };
         return Bullet;
     }());
