@@ -5,6 +5,7 @@ namespace scenes {
     private _space: objects.Space;
     private _restartButton: objects.Button;
     private _successLabel: objects.Label;
+    private _victoryMusic: createjs.AbstractSoundInstance;
 
     // public properties
 
@@ -43,6 +44,19 @@ namespace scenes {
 
       this._restartButton = new objects.Button("resetButton", 320, 360, true);
 
+      /*
+      TODO: victory music plays, but doesn't stop playing after reset.
+      if (
+        managers.Mission.enemiesDestroyed >=
+          managers.Mission.mission1Objective &&
+        managers.Game.scoreBoard.Lives != 0
+      ) {
+        // play victory sound when the level starts
+        this._victoryMusic = createjs.Sound.play("victory");
+        this._victoryMusic.volume = 0.1;
+        this._victoryMusic.loop = -1; // loop forever
+      }
+      */
       this.Main();
     }
 

@@ -27,13 +27,13 @@ var scenes;
         // private methods
         // public methods
         Start.prototype.Start = function () {
-            this._ocean = new objects.Space();
+            this._space = new objects.Space();
             this._welcomeLabel = new objects.Label("Sentinel", "30px", "PressStart2P", "#FFFFFF", 255, 240, true);
             this._startButton = new objects.Button("startButton", 320, 360, true);
             this.Main();
         };
         Start.prototype.Update = function () {
-            this._ocean.Update();
+            this._space.Update();
         };
         Start.prototype.Destroy = function () {
             this.removeAllChildren();
@@ -41,7 +41,7 @@ var scenes;
         Start.prototype.Reset = function () { };
         Start.prototype.Main = function () {
             // adds ocean to the stage
-            this.addChild(this._ocean);
+            this.addChild(this._space);
             this.addChild(this._welcomeLabel);
             this.addChild(this._startButton);
             this._startButton.on("click", function () {

@@ -2,7 +2,7 @@ module scenes {
   export class Start extends objects.Scene {
     // private instance variable
     private _welcomeLabel: objects.Label;
-    private _ocean: objects.Space;
+    private _space: objects.Space;
     private _startButton: objects.Button;
 
     // public properties
@@ -19,7 +19,7 @@ module scenes {
     // public methods
 
     public Start(): void {
-      this._ocean = new objects.Space();
+      this._space = new objects.Space();
       this._welcomeLabel = new objects.Label(
         "Sentinel",
         "30px",
@@ -35,7 +35,7 @@ module scenes {
     }
 
     public Update(): void {
-      this._ocean.Update();
+      this._space.Update();
     }
 
     public Destroy(): void {
@@ -47,7 +47,7 @@ module scenes {
     public Main(): void {
       // adds ocean to the stage
 
-      this.addChild(this._ocean);
+      this.addChild(this._space);
 
       this.addChild(this._welcomeLabel);
 
