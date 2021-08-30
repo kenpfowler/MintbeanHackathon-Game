@@ -28,7 +28,7 @@ var scenes;
         // public methods
         Start.prototype.Start = function () {
             this._ocean = new objects.Space();
-            this._welcomeLabel = new objects.Label("Voyager", "60px", "Dock51", "#FFFF00", 320, 240, true);
+            this._welcomeLabel = new objects.Label("Sentinel", "30px", "PressStart2P", "#FFFFFF", 255, 240, true);
             this._startButton = new objects.Button("startButton", 320, 360, true);
             this.Main();
         };
@@ -45,7 +45,7 @@ var scenes;
             this.addChild(this._welcomeLabel);
             this.addChild(this._startButton);
             this._startButton.on("click", function () {
-                managers.Game.currentState = config.Scene.PLAY;
+                managers.Game.currentState = config.Scene.BRIEFING;
             });
         };
         return Start;

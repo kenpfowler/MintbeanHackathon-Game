@@ -21,11 +21,11 @@ module scenes {
     public Start(): void {
       this._ocean = new objects.Space();
       this._welcomeLabel = new objects.Label(
-        "Voyager",
-        "60px",
-        "Dock51",
-        "#FFFF00",
-        320,
+        "Sentinel",
+        "30px",
+        "PressStart2P",
+        "#FFFFFF",
+        255,
         240,
         true
       );
@@ -54,7 +54,7 @@ module scenes {
       this.addChild(this._startButton);
 
       this._startButton.on("click", () => {
-        managers.Game.currentState = config.Scene.PLAY;
+        managers.Game.currentState = config.Scene.BRIEFING;
       });
     }
   }
