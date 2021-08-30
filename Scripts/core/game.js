@@ -33,8 +33,8 @@
         assetManager.on("complete", Start); // call Start when assets are finished loading
     }
     function Start() {
-        console.log("%c Game Started...", "color: blue; font-size: 20px;");
-        canvas = document.getElementsByTagName("canvas")[0];
+        console.log("Game Started!");
+        canvas = document.querySelector("canvas");
         stage = new createjs.Stage(canvas);
         managers.Game.stage = stage; // passing a reference to the stage globally
         // stage.enableMouseOver(20);
@@ -159,6 +159,9 @@
         switch (currentState) {
             case config.Scene.START:
                 currentScene = new scenes.Start();
+                break;
+            case config.Scene.BRIEFING:
+                currentScene = new scenes.Briefing();
                 break;
             case config.Scene.PLAY:
                 currentScene = new scenes.Play();

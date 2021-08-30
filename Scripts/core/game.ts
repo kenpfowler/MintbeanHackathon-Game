@@ -39,8 +39,8 @@
   }
 
   function Start(): void {
-    console.log(`%c Game Started...`, "color: blue; font-size: 20px;");
-    canvas = document.getElementsByTagName("canvas")[0];
+    console.log("Game Started!");
+    canvas = document.querySelector("canvas");
     stage = new createjs.Stage(canvas);
     managers.Game.stage = stage; // passing a reference to the stage globally
     // stage.enableMouseOver(20);
@@ -157,7 +157,6 @@
   // this is the main game loop
   function Update(): void {
     currentScene.Update();
-
     if (currentState != managers.Game.currentState) {
       currentState = managers.Game.currentState;
       Main();
@@ -176,6 +175,9 @@
     switch (currentState) {
       case config.Scene.START:
         currentScene = new scenes.Start();
+        break;
+      case config.Scene.BRIEFING:
+        currentScene = new scenes.Briefing();
         break;
       case config.Scene.PLAY:
         currentScene = new scenes.Play();
