@@ -4,7 +4,8 @@
 const buttons = document.querySelectorAll(".btn");
 const newGameBtn = buttons[0];
 const howToPlayBtn = buttons[1];
-const backBtn = buttons[2];
+const aboutBtn = buttons[2];
+const backBtn = buttons[3];
 
 // GET PAGE ELEMENTS
 const header = document.querySelector("header");

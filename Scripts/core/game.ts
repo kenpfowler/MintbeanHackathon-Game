@@ -21,6 +21,10 @@
       src: "./Assets/audio/music/assets_music_02_Here_Comes_the_8-bit_Empire.mp3",
     },
     {
+      id: "victory",
+      src: "./Assets/audio/music/snd_music_victorytheme.ogg",
+    },
+    {
       id: "explosionSound",
       src: "./Assets/audio/soundfx/assets_audio_sfx_explosion.ogg",
     },
