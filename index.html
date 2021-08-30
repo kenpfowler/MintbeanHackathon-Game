@@ -7,17 +7,56 @@
       content="width=device-width, height=device-height, initial-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>COMP397 - Lesson 12</title>
+    <title>Sentinel</title>
     <!-- CSS Section -->
     <link rel="stylesheet" href="/Content/game.css" />
   </head>
   <body>
-    <div id="game">
-      <canvas id="canvas" width="640" height="480"></canvas>
+    <div class="container">
+      <header>
+        <h3>Ken Fowler's</h3>
+        <h1>Sentinel</h1>
+      </header>
+      <main>
+        <section class="intro">
+          <button class="btn">New Game</button>
+          <button class="btn">How To Play</button>
+        </section>
+        <section class="controls">
+          <h3>YOUR MISSION</h3>
+          <p>
+            The Mars Colony is in open rebellion against the governments of
+            Terra Prime. Your task, Sentinel, is to protect the people of Mars
+            colony from Terra Prime's expiditionary forces. Show them that the
+            people of Mars Colony will not be cowed by these incursions. Do this
+            and Mars Colony will remain free.
+          </p>
+          <h3>CONTROLS</h3>
+          <div class="flex-row">
+            <p>MOVE:</p>
+            <img
+              src="./hompage-assets/cursorKeyLeft.png"
+              alt="left arrow key"
+            />
+            <img
+              src="./hompage-assets/cursorKeyRight.png"
+              alt="right arrow key"
+            />
+          </div>
+          <div class="flex-row">
+            <p>FIRE:</p>
+            <img src="./hompage-assets/spacebar.png" alt="spacebar" />
+          </div>
+          <button class="btn">BACK</button>
+        </section>
+        <div id="game">
+          <canvas id="canvas" width="640" height="480"></canvas>
+        </div>
+      </main>
+      <footer><p>Made with ⚡ by Ken Fowler</p></footer>
     </div>
-
     <!-- JavaScript Section -->
-
+    <script src="./hompage.js"></script>
     <!-- CreateJS Libraries -->
     <script src="./node_modules/easeljs/lib/easeljs.min.js"></script>
     <script src="./node_modules/tweenjs/lib/tweenjs.min.js"></script>
@@ -59,6 +98,7 @@
     <script src="./Scripts/objects/scene.js"></script>
 
     <!-- Managers continued  -->
+    <script src="./Scripts/managers/mission.js"></script>
     <script src="./Scripts/managers/scoreboard.js"></script>
     <script src="./Scripts/managers/bullet.js"></script>
     <script src="./Scripts/managers/collision.js"></script>
@@ -66,6 +106,7 @@
     <!-- Scenes -->
     <script src="./Scripts/scenes/over.js"></script>
     <script src="./Scripts/scenes/play.js"></script>
+    <script src="./Scripts/scenes/briefing.js"></script>
     <script src="./Scripts/scenes/start.js"></script>
 
     <!-- Core Game Scripts -->
