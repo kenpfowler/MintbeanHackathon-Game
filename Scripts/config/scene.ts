@@ -1,9 +1,9 @@
 module config {
-    export enum Scene {
-        START,
-        PLAY,
-        OVER,
-        SCENE_COUNT
-    }
-
+  export enum Scene {
+    START,
+    BRIEFING,
+    PLAY,
+    OVER,
+    SCENE_COUNT,
+  }
 }
