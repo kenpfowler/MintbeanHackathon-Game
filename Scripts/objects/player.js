@@ -19,7 +19,7 @@ var objects;
         __extends(Player, _super);
         // constructors
         function Player() {
-            var _this = _super.call(this, "plane") || this;
+            var _this = _super.call(this, "ship") || this;
             _this.Start();
             return _this;
         }
@@ -84,24 +84,24 @@ var objects;
                   */
             /* move in direction that player is facing */
             /*
-                  if(managers.Input.moveForward) {
-                      this.x += 5 * Math.cos(direction * (degToRad));
-                      this.y -= 5 * Math.sin(direction * degToRad);
-                  }
+            if (managers.Input.moveForward) {
+              this.x += 5 * Math.cos(direction * degToRad);
+              this.y -= 5 * Math.sin(direction * degToRad);
+            }
       
-                  if(managers.Input.moveBackward) {
-                      this.x -= 5 * Math.cos(direction * (degToRad));
-                      this.y += 5 * Math.sin(direction * degToRad);
-                  }
+            if (managers.Input.moveBackward) {
+              this.x -= 5 * Math.cos(direction * degToRad);
+              this.y += 5 * Math.sin(direction * degToRad);
+            }
       
-                  if(managers.Input.moveLeft) {
-                      this.rotation -= 5;
-                  }
+            if (managers.Input.moveLeft) {
+              this.rotation -= 5;
+            }
       
-                  if(managers.Input.moveRight) {
-                      this.rotation += 5;
-                  }
-                  */
+            if (managers.Input.moveRight) {
+              this.rotation += 5;
+            }
+          */
             /* gamepad controls
                   if(managers.Input.gamepad1.Axis[config.Gamepad.HORIZONTAL] > 0) {
                       this.x += 10;

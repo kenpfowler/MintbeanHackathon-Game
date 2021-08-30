@@ -14,7 +14,7 @@ module objects {
 
     // constructors
     constructor() {
-      super("plane");
+      super("ship");
 
       this.Start();
     }
@@ -89,24 +89,24 @@ module objects {
       /* move in direction that player is facing */
 
       /*
-            if(managers.Input.moveForward) {
-                this.x += 5 * Math.cos(direction * (degToRad));
-                this.y -= 5 * Math.sin(direction * degToRad);
-            }
+      if (managers.Input.moveForward) {
+        this.x += 5 * Math.cos(direction * degToRad);
+        this.y -= 5 * Math.sin(direction * degToRad);
+      }
 
-            if(managers.Input.moveBackward) {
-                this.x -= 5 * Math.cos(direction * (degToRad));
-                this.y += 5 * Math.sin(direction * degToRad);
-            }
+      if (managers.Input.moveBackward) {
+        this.x -= 5 * Math.cos(direction * degToRad);
+        this.y += 5 * Math.sin(direction * degToRad);
+      }
 
-            if(managers.Input.moveLeft) {
-                this.rotation -= 5;
-            }
+      if (managers.Input.moveLeft) {
+        this.rotation -= 5;
+      }
 
-            if(managers.Input.moveRight) {
-                this.rotation += 5;
-            }
-            */
+      if (managers.Input.moveRight) {
+        this.rotation += 5;
+      }
+    */
 
       /* gamepad controls 
             if(managers.Input.gamepad1.Axis[config.Gamepad.HORIZONTAL] > 0) {
