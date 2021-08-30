@@ -11,6 +11,9 @@ var managers;
             // TODO: hardcoded mission objective for now.  Mabye scene should pass objective to the Mission manager?
             if (this.enemiesDestroyed >= this.mission1Objective) {
                 managers.Game.currentState = config.Scene.OVER;
+                if (managers.Game.scoreBoard.HighScore <= managers.Game.scoreBoard.Score) {
+                    managers.Game.scoreBoard.HighScore = managers.Game.scoreBoard.Score;
+                }
             }
         };
         Mission.Reset = function () {
