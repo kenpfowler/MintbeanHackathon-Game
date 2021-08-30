@@ -19,4 +19,4 @@
 ### About the Developer
 
 Ken Fowler developed Sentinel as part of a Hackathon hosted by [Mintbean](https://mintbean.io/meets?sort=upcoming).
-Visit Ken's [page](https://www.kennyf.ca/) or [LinkedIN](https://www.linkedin.com/in/kenpfowler/) to get in touch.
+Visit Ken's [page](https://www.kennyf.ca/) or [LinkedIn](https://www.linkedin.com/in/kenpfowler/) to get in touch.
