@@ -53,9 +53,9 @@ var managers;
         // public methods
         // Initialize Objects
         ScoreBoard.prototype.Start = function () {
-            this._scoreLabel = new objects.Label("Score: 99999", "30px", "Dock51", "#FFFF00", 350, 10, false);
-            this._livesLabel = new objects.Label("Lives: 99", "30px", "Dock51", "#FFFF00", 20, 10, false);
-            this._highScoreLabel = new objects.Label("High Score: 999999", "60px", "Dock51", "#FFFF00", 320, 140, true);
+            this._scoreLabel = new objects.Label("Score: 99999", "20px", "PressStart2P", "#FFFFFF", 350, 10, false);
+            this._livesLabel = new objects.Label("Lives: 99", "20px", "PressStart2P", "#FFFFFF", 20, 10, false);
+            this._highScoreLabel = new objects.Label("High Score: 999999", "30px", "PressStart2P", "#FFFFFF", 245, 140, true);
         };
         ScoreBoard.prototype.AddGameUI = function (currentScene) {
             currentScene.addChild(this._livesLabel);
