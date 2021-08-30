@@ -27,13 +27,14 @@ var scenes;
         // private methods
         // public methods
         Over.prototype.Start = function () {
-            this._ocean = new objects.Space();
-            this._gameOverLabel = new objects.Label("Game Over", "60px", "Dock51", "#FFFF00", 320, 240, true);
+            this._space = new objects.Space();
+            this._gameOverLabel = new objects.Label("Game Over", "30px", "PressStart2P", "#FFFFFF", 320, 240, true);
+            this._successLabel = new objects.Label("MISSION COMPLETE!", "30px", "PressStart2P", "#FFFFFF", 320, 240, true);
             this._restartButton = new objects.Button("resetButton", 320, 360, true);
             this.Main();
         };
         Over.prototype.Update = function () {
-            this._ocean.Update();
+            this._space.Update();
         };
         Over.prototype.Destroy = function () {
             this.removeAllChildren();
@@ -41,11 +42,19 @@ var scenes;
         Over.prototype.Reset = function () { };
         Over.prototype.Main = function () {
             // adds ocean to the stage
-            this.addChild(this._ocean);
-            this.addChild(this._gameOverLabel);
+            this.addChild(this._space);
+            if (managers.Mission.enemiesDestroyed >=
+                managers.Mission.mission1Objective &&
+                managers.Game.scoreBoard.Lives != 0) {
+                this.addChild(this._successLabel);
+            }
+            else {
+                this.addChild(this._gameOverLabel);
+            }
             this.addChild(this._restartButton);
             this._restartButton.on("click", function () {
                 managers.Game.currentState = config.Scene.PLAY;
+                managers.Mission.Reset();
                 managers.Game.scoreBoard.Reset();
             });
             managers.Game.scoreBoard.AddHighScore(this);
