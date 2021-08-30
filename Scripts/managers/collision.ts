@@ -43,10 +43,14 @@ module managers {
                 let explosionSound = createjs.Sound.play("explosionSound");
                 explosionSound.volume = 0.1;
                 managers.Game.scoreBoard.Score += 100;
+                managers.Mission.enemiesDestroyed += 1;
+                managers.Mission.Check();
                 Collision.createExplosion(object2);
                 object2.Reset();
                 object1.Reset();
-                console.log("enemy hit by bullet");
+                console.log({
+                  enemiesDestroyed: managers.Mission.enemiesDestroyed,
+                });
               } else {
                 let explosionSound = createjs.Sound.play("explosionSound");
                 explosionSound.volume = 0.1;
