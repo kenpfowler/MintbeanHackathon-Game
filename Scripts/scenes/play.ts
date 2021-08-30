@@ -96,6 +96,8 @@ namespace scenes {
         managers.Collision.Check(this._player, bullet);
         managers.Collision.Check(bullet, this._enemy);
       });
+
+      managers.Mission.Check();
     }
 
     public Destroy(): void {

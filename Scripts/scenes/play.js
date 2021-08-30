@@ -74,6 +74,7 @@ var scenes;
                 managers.Collision.Check(_this._player, bullet);
                 managers.Collision.Check(bullet, _this._enemy);
             });
+            managers.Mission.Check();
         };
         Play.prototype.Destroy = function () {
             this.removeAllChildren();
