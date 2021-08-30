@@ -10,11 +10,15 @@
 }
 
 body {
-  background-color: lightgrey;
+  background-image: url("../hompage-assets/spacebackground.jpg");
   font-family: "Press Start 2P", cursive;
+  color: white;
   margin: 0 0;
 }
 
+a {
+  color: yellow;
+}
 .container {
   min-height: 100vh;
   justify-content: space-between;
@@ -40,7 +44,8 @@ h3 {
   gap: 10px;
 }
 
-.controls {
+.controls,
+.about {
   display: none;
   max-width: 80%;
   flex-direction: column;
@@ -74,6 +79,21 @@ input[type="reset"] {
   outline: inherit;
 }
 
+.card {
+  display: flex;
+  flex-direction: row;
+  max-width: 80%;
+}
+
+.card-img-top {
+  width: 288px;
+  height: 384px;
+}
+
+.card-body {
+  padding-left: 45px;
+}
+
 .btn {
   text-align: center;
   text-transform: uppercase;
@@ -85,6 +105,7 @@ input[type="reset"] {
 
 .btn:hover {
   background-color: #2a628f;
+  transition: ease-in-out;
 }
 
 footer {
@@ -103,4 +124,36 @@ footer {
 .flex-col {
   display: flex;
   flex-direction: column;
+}
+
+.social-icon {
+  display: flex;
+  width: 32px;
+  height: 30px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.w-inline-block {
+  max-width: 100%;
+  display: inline-block;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 800px) {
+  .card {
+    flex-direction: column;
+    padding: 10px;
+    max-width: 100%;
+  }
+  .card-body {
+    padding-left: 0px;
+  }
 }
