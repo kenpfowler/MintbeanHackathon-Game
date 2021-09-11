@@ -3,16 +3,11 @@ namespace scenes {
     // private instance variable
     private _player: objects.Player;
     private _space: objects.Space;
-
     private _asteroidNum: number;
     private _asteroids: objects.Asteroid[];
-
     private _enemy: objects.Enemy;
-
     private _level1Music: createjs.AbstractSoundInstance;
-
-    private _bulletManager: managers.Bullet;
-
+    private _phaserManager: managers.Phaser;
     private _gamepadManager: managers.GamePad;
 
     // public properties
@@ -51,9 +46,9 @@ namespace scenes {
       this._level1Music.volume = 0.1;
       this._level1Music.loop = -1; // loop forever
 
-      // instantiates a new bullet manager
-      this._bulletManager = new managers.Bullet();
-      managers.Game.bulletManager = this._bulletManager;
+      // instantiates a new phaser manager
+      this._phaserManager = new managers.Phaser();
+      managers.Game.phaserManager = this._phaserManager;
 
       this.SetupInput();
 
@@ -71,16 +66,14 @@ namespace scenes {
         managers.Input.gamepad1.Buttons[0] &&
         createjs.Ticker.getTicks() % 7 == 0
       ) {
-        managers.Game.bulletManager.FireBullet(
-          managers.Game.player.BulletSpawn,
+        managers.Game.phaserManager.FirePhaser(
+          managers.Game.player.PhaserSpawn,
           util.Vector2.up()
         );
       }
 
       this._space.Update();
       this._player.Update();
-
-      // check if player and island are colliding
 
       // Update Each asteroid in the asteroid Array
       this._asteroids.forEach((asteroid) => {
@@ -91,10 +84,10 @@ namespace scenes {
       this._enemy.Update();
       managers.Collision.Check(this._player, this._enemy);
 
-      this._bulletManager.Update();
-      this._bulletManager.Bullets.forEach((bullet) => {
-        managers.Collision.Check(this._player, bullet);
-        managers.Collision.Check(bullet, this._enemy);
+      this._phaserManager.Update();
+      this._phaserManager.Phasers.forEach((phaser) => {
+        managers.Collision.Check(this._player, phaser);
+        managers.Collision.Check(phaser, this._enemy);
       });
 
       managers.Mission.Check();
@@ -109,19 +102,18 @@ namespace scenes {
     public Reset(): void {}
 
     public Main(): void {
-      // adds ocean to the scene
+      // add space background to the scene
       this.addChild(this._space);
 
-      // adds island to the scene
-
+      // add enemy to the scene
       this.addChild(this._enemy);
 
       // adds player to the scene
       this.addChild(this._player);
 
-      // adds bullets to the scene
-      this._bulletManager.Bullets.forEach((bullet) => {
-        this.addChild(bullet);
+      // adds phasers to the scene
+      this._phaserManager.Phasers.forEach((phaser) => {
+        this.addChild(phaser);
       });
 
       // adds Each asteroid in the asteroid Array to the Scene

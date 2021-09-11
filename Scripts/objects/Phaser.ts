@@ -1,5 +1,5 @@
 module objects {
-  export class Bullet extends objects.SpriteGameObject {
+  export class Phaser extends objects.SpriteGameObject {
     // private instance variable
     private _speed: number;
     private _direction: util.Vector2;

@@ -34,7 +34,7 @@ var objects;
                 this.Reset();
             }
             if (createjs.Ticker.getTicks() % 20 == 0 && this.y > 0) {
-                managers.Game.bulletManager.FireBullet(util.Vector2.Add(this.Position, this._bulletSpawn), util.Vector2.down());
+                managers.Game.phaserManager.FirePhaser(util.Vector2.Add(this.Position, this._phaserSpawn), util.Vector2.down());
             }
         };
         // public methods
@@ -47,7 +47,7 @@ var objects;
         Enemy.prototype.Start = function () {
             this.regX = this.HalfWidth;
             this.regY = this.HalfHeight;
-            this._bulletSpawn = new util.Vector2(0, 5 + this.HalfHeight);
+            this._phaserSpawn = new util.Vector2(0, 5 + this.HalfHeight);
             this.Reset();
         };
         Enemy.prototype.Update = function () {

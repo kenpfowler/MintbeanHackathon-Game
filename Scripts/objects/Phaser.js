@@ -15,15 +15,15 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var Bullet = /** @class */ (function (_super) {
-        __extends(Bullet, _super);
+    var Phaser = /** @class */ (function (_super) {
+        __extends(Phaser, _super);
         // Constructors
-        function Bullet() {
+        function Phaser() {
             var _this = _super.call(this, "phaser") || this;
             _this.Start();
             return _this;
         }
-        Object.defineProperty(Bullet.prototype, "Direction", {
+        Object.defineProperty(Phaser.prototype, "Direction", {
             // public properties
             get: function () {
                 return this._direction;
@@ -34,7 +34,7 @@ var objects;
             enumerable: false,
             configurable: true
         });
-        Object.defineProperty(Bullet.prototype, "IsInPlay", {
+        Object.defineProperty(Phaser.prototype, "IsInPlay", {
             get: function () {
                 return this._isInPlay;
             },
@@ -49,38 +49,38 @@ var objects;
             configurable: true
         });
         // private methods
-        Bullet.prototype._move = function () {
+        Phaser.prototype._move = function () {
             this._updatePosition();
             this.Position = util.Vector2.Add(this.Position, this._velocity);
             this.x = this.Position.x;
             this.y = this.Position.y;
         };
-        Bullet.prototype._checkBounds = function () {
+        Phaser.prototype._checkBounds = function () {
             if (this.y > 480 + this.HalfHeight || this.y < -this.HalfHeight) {
                 this.IsInPlay = false;
                 this.Reset();
             }
         };
         // public methods
-        Bullet.prototype.Reset = function () {
+        Phaser.prototype.Reset = function () {
             this.x = -10000;
             this.y = -10000;
             this._updatePosition();
             this.Direction = util.Vector2.zero();
         };
-        Bullet.prototype.Start = function () {
+        Phaser.prototype.Start = function () {
             this._speed = 15;
             this.IsInPlay = false;
         };
-        Bullet.prototype.Update = function () {
+        Phaser.prototype.Update = function () {
             if (this.IsInPlay) {
                 this._move();
                 this._checkBounds();
             }
         };
-        Bullet.prototype.Destroy = function () { };
-        return Bullet;
+        Phaser.prototype.Destroy = function () { };
+        return Phaser;
     }(objects.SpriteGameObject));
-    objects.Bullet = Bullet;
+    objects.Phaser = Phaser;
 })(objects || (objects = {}));
-//# sourceMappingURL=bullet.js.map
+//# sourceMappingURL=Phaser.js.map

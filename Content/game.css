@@ -166,4 +166,8 @@ footer {
   .card-body {
     padding-left: 0px;
   }
+
+  footer {
+    font-size: 12px;
+  }
 }

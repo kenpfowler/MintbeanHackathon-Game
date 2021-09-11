@@ -1,15 +1,15 @@
 module objects {
   export class Player extends objects.SpriteGameObject {
     // private instance variables
-    _bulletSpawn: util.Vector2;
+    _phaserSpawn: util.Vector2;
 
     // public properties
-    get BulletSpawn(): util.Vector2 {
-      return this._bulletSpawn;
+    get PhaserSpawn(): util.Vector2 {
+      return this._phaserSpawn;
     }
 
-    set BulletSpawn(newSpawnPoint: util.Vector2) {
-      this._bulletSpawn = newSpawnPoint;
+    set PhaserSpawn(newSpawnPoint: util.Vector2) {
+      this._phaserSpawn = newSpawnPoint;
     }
 
     // constructors
@@ -32,8 +32,8 @@ module objects {
 
     public Update(): void {
       if (managers.Input.fire) {
-        managers.Game.bulletManager.FireBullet(
-          managers.Game.player.BulletSpawn,
+        managers.Game.phaserManager.FirePhaser(
+          managers.Game.player.PhaserSpawn,
           util.Vector2.up()
         );
         managers.Input.fire = false;
@@ -41,7 +41,7 @@ module objects {
 
       this.Move();
       this._updatePosition();
-      this.BulletSpawn = new util.Vector2(
+      this.PhaserSpawn = new util.Vector2(
         this.x - 6,
         this.y - this.HalfHeight - 2
       );

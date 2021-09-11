@@ -23,13 +23,13 @@ var objects;
             _this.Start();
             return _this;
         }
-        Object.defineProperty(Player.prototype, "BulletSpawn", {
+        Object.defineProperty(Player.prototype, "PhaserSpawn", {
             // public properties
             get: function () {
-                return this._bulletSpawn;
+                return this._phaserSpawn;
             },
             set: function (newSpawnPoint) {
-                this._bulletSpawn = newSpawnPoint;
+                this._phaserSpawn = newSpawnPoint;
             },
             enumerable: false,
             configurable: true
@@ -44,12 +44,12 @@ var objects;
         };
         Player.prototype.Update = function () {
             if (managers.Input.fire) {
-                managers.Game.bulletManager.FireBullet(managers.Game.player.BulletSpawn, util.Vector2.up());
+                managers.Game.phaserManager.FirePhaser(managers.Game.player.PhaserSpawn, util.Vector2.up());
                 managers.Input.fire = false;
             }
             this.Move();
             this._updatePosition();
-            this.BulletSpawn = new util.Vector2(this.x - 6, this.y - this.HalfHeight - 2);
+            this.PhaserSpawn = new util.Vector2(this.x - 6, this.y - this.HalfHeight - 2);
             // checks the right boundary
             if (this.x > 640 - this.HalfWidth) {
                 this.x = 640 - this.HalfWidth;

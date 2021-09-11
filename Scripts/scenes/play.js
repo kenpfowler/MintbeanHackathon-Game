@@ -42,9 +42,9 @@ var scenes;
             this._level1Music = createjs.Sound.play("level1Music");
             this._level1Music.volume = 0.1;
             this._level1Music.loop = -1; // loop forever
-            // instantiates a new bullet manager
-            this._bulletManager = new managers.Bullet();
-            managers.Game.bulletManager = this._bulletManager;
+            // instantiates a new phaser manager
+            this._phaserManager = new managers.Phaser();
+            managers.Game.phaserManager = this._phaserManager;
             this.SetupInput();
             this.Main();
         };
@@ -57,11 +57,10 @@ var scenes;
             managers.Input.gamepad1.Update();
             if (managers.Input.gamepad1.Buttons[0] &&
                 createjs.Ticker.getTicks() % 7 == 0) {
-                managers.Game.bulletManager.FireBullet(managers.Game.player.BulletSpawn, util.Vector2.up());
+                managers.Game.phaserManager.FirePhaser(managers.Game.player.PhaserSpawn, util.Vector2.up());
             }
             this._space.Update();
             this._player.Update();
-            // check if player and island are colliding
             // Update Each asteroid in the asteroid Array
             this._asteroids.forEach(function (asteroid) {
                 asteroid.Update();
@@ -69,10 +68,10 @@ var scenes;
             });
             this._enemy.Update();
             managers.Collision.Check(this._player, this._enemy);
-            this._bulletManager.Update();
-            this._bulletManager.Bullets.forEach(function (bullet) {
-                managers.Collision.Check(_this._player, bullet);
-                managers.Collision.Check(bullet, _this._enemy);
+            this._phaserManager.Update();
+            this._phaserManager.Phasers.forEach(function (phaser) {
+                managers.Collision.Check(_this._player, phaser);
+                managers.Collision.Check(phaser, _this._enemy);
             });
             managers.Mission.Check();
         };
@@ -84,15 +83,15 @@ var scenes;
         Play.prototype.Reset = function () { };
         Play.prototype.Main = function () {
             var _this = this;
-            // adds ocean to the scene
+            // add space background to the scene
             this.addChild(this._space);
-            // adds island to the scene
+            // add enemy to the scene
             this.addChild(this._enemy);
             // adds player to the scene
             this.addChild(this._player);
-            // adds bullets to the scene
-            this._bulletManager.Bullets.forEach(function (bullet) {
-                _this.addChild(bullet);
+            // adds phasers to the scene
+            this._phaserManager.Phasers.forEach(function (phaser) {
+                _this.addChild(phaser);
             });
             // adds Each asteroid in the asteroid Array to the Scene
             this._asteroids.forEach(function (asteroid) {
