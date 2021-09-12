@@ -86,4 +86,4 @@ var objects;
     }(objects.SpriteGameObject));
     objects.Phaser = Phaser;
 })(objects || (objects = {}));
-//# sourceMappingURL=Phaser.js.map
+//# sourceMappingURL=phaser.js.map

@@ -75,4 +75,4 @@ var managers;
     }());
     managers.Phaser = Phaser;
 })(managers || (managers = {}));
-//# sourceMappingURL=Phaser.js.map
+//# sourceMappingURL=phaser.js.map
