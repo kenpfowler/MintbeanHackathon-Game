@@ -61,6 +61,7 @@ module managers {
       });
     }
 
+    // position phaser fire, set direction, and play sound
     public FirePhaser(spawnPoint: util.Vector2, direction: util.Vector2): void {
       this.CurrentPhaser.Position = spawnPoint;
       this.CurrentPhaser.x = spawnPoint.x;

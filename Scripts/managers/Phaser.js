@@ -56,6 +56,7 @@ var managers;
                 phaser.Update();
             });
         };
+        // position phaser fire, set direction, and play sound
         Phaser.prototype.FirePhaser = function (spawnPoint, direction) {
             this.CurrentPhaser.Position = spawnPoint;
             this.CurrentPhaser.x = spawnPoint.x;
