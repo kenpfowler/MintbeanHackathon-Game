@@ -17,7 +17,7 @@ var objects;
 (function (objects) {
     var Phaser = /** @class */ (function (_super) {
         __extends(Phaser, _super);
-        // Constructors
+        // Constructor
         function Phaser() {
             var _this = _super.call(this, "phaser") || this;
             _this.Start();
@@ -62,16 +62,19 @@ var objects;
             }
         };
         // public methods
+        // reset the phasers position off screen and clear direction
         Phaser.prototype.Reset = function () {
             this.x = -10000;
             this.y = -10000;
             this._updatePosition();
             this.Direction = util.Vector2.zero();
         };
+        // give the phaser a speed and keep it out of play
         Phaser.prototype.Start = function () {
             this._speed = 15;
             this.IsInPlay = false;
         };
+        // if the phaser is in play then cause it to move.  Make sure it doesn't exit the game area.
         Phaser.prototype.Update = function () {
             if (this.IsInPlay) {
                 this._move();

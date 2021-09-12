@@ -27,7 +27,7 @@ module objects {
       this._velocity = util.Vector2.Mulitply(this.Direction, this._speed);
     }
 
-    // Constructors
+    // Constructor
 
     constructor() {
       super("phaser");
@@ -50,6 +50,8 @@ module objects {
     }
 
     // public methods
+
+    // reset the phasers position off screen and clear direction
     public Reset(): void {
       this.x = -10000;
       this.y = -10000;
@@ -57,11 +59,13 @@ module objects {
       this.Direction = util.Vector2.zero();
     }
 
+    // give the phaser a speed and keep it out of play
     public Start(): void {
       this._speed = 15;
       this.IsInPlay = false;
     }
 
+    // if the phaser is in play then cause it to move.  Make sure it doesn't exit the game area.
     public Update(): void {
       if (this.IsInPlay) {
         this._move();
