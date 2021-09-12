@@ -51,12 +51,20 @@ var objects;
             this._updatePosition();
             this.PhaserSpawn = new util.Vector2(this.x - 6, this.y - this.HalfHeight - 2);
             // checks the right boundary
-            if (this.x > 640 - this.HalfWidth) {
-                this.x = 640 - this.HalfWidth;
+            if (this.x > 640 - this.HalfHeight) {
+                this.x = 640 - this.HalfHeight;
             }
             // check the left boundary
-            if (this.x < this.HalfWidth) {
-                this.x = this.HalfWidth;
+            if (this.x < this.HalfHeight) {
+                this.x = this.HalfHeight;
+            }
+            // checks the top boundary
+            if (this.y > 480 - this.HalfWidth) {
+                this.y = 480 - this.HalfWidth;
+            }
+            // check the bottom boundary
+            if (this.y < this.HalfWidth) {
+                this.y = this.HalfWidth;
             }
         };
         Player.prototype.Move = function () {
@@ -70,18 +78,13 @@ var objects;
             if (managers.Input.moveLeft) {
                 this.x -= 10;
             }
-            /*
-      
-                  // standard movement - forward - back
-      
-                  if(managers.Input.moveForward) {
-                      this.y -= 5;
-                  }
-      
-                  if(managers.Input.moveBackward) {
-                      this.y += 5;
-                  }
-                  */
+            // standard movement - forward - back
+            if (managers.Input.moveForward) {
+                this.y -= 5;
+            }
+            if (managers.Input.moveBackward) {
+                this.y += 5;
+            }
             /* move in direction that player is facing */
             /*
             if (managers.Input.moveForward) {
@@ -101,7 +104,7 @@ var objects;
             if (managers.Input.moveRight) {
               this.rotation += 5;
             }
-          */
+            */
             /* gamepad controls
                   if(managers.Input.gamepad1.Axis[config.Gamepad.HORIZONTAL] > 0) {
                       this.x += 10;

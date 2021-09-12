@@ -47,13 +47,23 @@ module objects {
       );
 
       // checks the right boundary
-      if (this.x > 640 - this.HalfWidth) {
-        this.x = 640 - this.HalfWidth;
+      if (this.x > 640 - this.HalfHeight) {
+        this.x = 640 - this.HalfHeight;
       }
 
       // check the left boundary
-      if (this.x < this.HalfWidth) {
-        this.x = this.HalfWidth;
+      if (this.x < this.HalfHeight) {
+        this.x = this.HalfHeight;
+      }
+
+      // checks the top boundary
+      if (this.y > 480 - this.HalfWidth) {
+        this.y = 480 - this.HalfWidth;
+      }
+
+      // check the bottom boundary
+      if (this.y < this.HalfWidth) {
+        this.y = this.HalfWidth;
       }
     }
 
@@ -73,18 +83,15 @@ module objects {
         this.x -= 10;
       }
 
-      /*
+      // standard movement - forward - back
 
-            // standard movement - forward - back
+      if (managers.Input.moveForward) {
+        this.y -= 5;
+      }
 
-            if(managers.Input.moveForward) {
-                this.y -= 5;
-            }
-
-            if(managers.Input.moveBackward) {
-                this.y += 5;
-            }
-            */
+      if (managers.Input.moveBackward) {
+        this.y += 5;
+      }
 
       /* move in direction that player is facing */
 
@@ -106,7 +113,7 @@ module objects {
       if (managers.Input.moveRight) {
         this.rotation += 5;
       }
-    */
+      */
 
       /* gamepad controls 
             if(managers.Input.gamepad1.Axis[config.Gamepad.HORIZONTAL] > 0) {
