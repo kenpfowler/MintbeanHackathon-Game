@@ -1,22 +1,26 @@
 module managers {
   export class ScoreBoard {
     // private instance variables
-    private _score: number;
+    private _destroyed: number;
     private _lives: number;
-    private _highScore: number;
+    private _totalDestroyed: number;
 
-    private _scoreLabel: objects.Label;
+    private _destroyedLabel: objects.Label;
     private _livesLabel: objects.Label;
-    private _highScoreLabel: objects.Label;
+    private _totalDestroyedLabel: objects.Label;
 
     // public properties
-    get Score(): number {
-      return this._score;
+    get Destroyed(): number {
+      return this._destroyed;
     }
 
-    set Score(newValue: number) {
-      this._score = newValue;
-      this._scoreLabel.text = "Score: " + this._score;
+    set Destroyed(newValue: number) {
+      this._destroyed = newValue;
+      this._destroyedLabel.text =
+        "Destroyed: " +
+        this._destroyed +
+        "/" +
+        managers.Mission.mission1Objective;
     }
 
     get Lives(): number {
@@ -28,13 +32,17 @@ module managers {
       this._livesLabel.text = "Lives: " + this._lives;
     }
 
-    get HighScore(): number {
-      return this._highScore;
+    get TotalDestroyed(): number {
+      return this._totalDestroyed;
     }
 
-    set HighScore(newValue: number) {
-      this._highScore = newValue;
-      this._highScoreLabel.text = "High Score: " + this._highScore;
+    set TotalDestroyed(newValue: number) {
+      this._totalDestroyed = newValue;
+      this._totalDestroyedLabel.text =
+        "Destroyed: " +
+        this._totalDestroyed +
+        "/" +
+        managers.Mission.mission1Objective;
     }
 
     // constructor
@@ -51,8 +59,8 @@ module managers {
       this.Start();
 
       this.Lives = livesNum;
-      this.Score = scoreNum;
-      this.HighScore = highScoreNum;
+      this.Destroyed = scoreNum;
+      this.TotalDestroyed = highScoreNum;
     }
 
     // private methods
@@ -61,8 +69,8 @@ module managers {
 
     // Initialize Objects
     public Start(): void {
-      this._scoreLabel = new objects.Label(
-        "Score: 99999",
+      this._destroyedLabel = new objects.Label(
+        "Destroyed: 99999",
         "20px",
         "PressStart2P",
         "#FFFFFF",
@@ -79,8 +87,8 @@ module managers {
         10,
         false
       );
-      this._highScoreLabel = new objects.Label(
-        "High Score: 999999",
+      this._totalDestroyedLabel = new objects.Label(
+        "Destroyed: 999999",
         "30px",
         "PressStart2P",
         "#FFFFFF",
@@ -92,16 +100,16 @@ module managers {
 
     public AddGameUI(currentScene: objects.Scene): void {
       currentScene.addChild(this._livesLabel);
-      currentScene.addChild(this._scoreLabel);
+      currentScene.addChild(this._destroyedLabel);
     }
 
-    public AddHighScore(currentScene: objects.Scene): void {
-      currentScene.addChild(this._highScoreLabel);
+    public AddTotalDestroyedLabel(currentScene: objects.Scene): void {
+      currentScene.addChild(this._totalDestroyedLabel);
     }
 
     public Reset(livesNum: number = 5, scoreNum: number = 0): void {
       this.Lives = livesNum;
-      this.Score = scoreNum;
+      this.Destroyed = scoreNum;
     }
   }
 }

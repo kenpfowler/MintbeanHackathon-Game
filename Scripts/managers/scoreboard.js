@@ -12,17 +12,21 @@ var managers;
             if (highScoreNum === void 0) { highScoreNum = 0; }
             this.Start();
             this.Lives = livesNum;
-            this.Score = scoreNum;
-            this.HighScore = highScoreNum;
+            this.Destroyed = scoreNum;
+            this.TotalDestroyed = highScoreNum;
         }
-        Object.defineProperty(ScoreBoard.prototype, "Score", {
+        Object.defineProperty(ScoreBoard.prototype, "Destroyed", {
             // public properties
             get: function () {
-                return this._score;
+                return this._destroyed;
             },
             set: function (newValue) {
-                this._score = newValue;
-                this._scoreLabel.text = "Score: " + this._score;
+                this._destroyed = newValue;
+                this._destroyedLabel.text =
+                    "Destroyed: " +
+                        this._destroyed +
+                        "/" +
+                        managers.Mission.mission1Objective;
             },
             enumerable: false,
             configurable: true
@@ -38,13 +42,17 @@ var managers;
             enumerable: false,
             configurable: true
         });
-        Object.defineProperty(ScoreBoard.prototype, "HighScore", {
+        Object.defineProperty(ScoreBoard.prototype, "TotalDestroyed", {
             get: function () {
-                return this._highScore;
+                return this._totalDestroyed;
             },
             set: function (newValue) {
-                this._highScore = newValue;
-                this._highScoreLabel.text = "High Score: " + this._highScore;
+                this._totalDestroyed = newValue;
+                this._totalDestroyedLabel.text =
+                    "Destroyed: " +
+                        this._totalDestroyed +
+                        "/" +
+                        managers.Mission.mission1Objective;
             },
             enumerable: false,
             configurable: true
@@ -53,22 +61,22 @@ var managers;
         // public methods
         // Initialize Objects
         ScoreBoard.prototype.Start = function () {
-            this._scoreLabel = new objects.Label("Score: 99999", "20px", "PressStart2P", "#FFFFFF", 350, 10, false);
+            this._destroyedLabel = new objects.Label("Destroyed: 99999", "20px", "PressStart2P", "#FFFFFF", 350, 10, false);
             this._livesLabel = new objects.Label("Lives: 99", "20px", "PressStart2P", "#FFFFFF", 20, 10, false);
-            this._highScoreLabel = new objects.Label("High Score: 999999", "30px", "PressStart2P", "#FFFFFF", 245, 140, true);
+            this._totalDestroyedLabel = new objects.Label("Destroyed: 999999", "30px", "PressStart2P", "#FFFFFF", 245, 140, true);
         };
         ScoreBoard.prototype.AddGameUI = function (currentScene) {
             currentScene.addChild(this._livesLabel);
-            currentScene.addChild(this._scoreLabel);
+            currentScene.addChild(this._destroyedLabel);
         };
-        ScoreBoard.prototype.AddHighScore = function (currentScene) {
-            currentScene.addChild(this._highScoreLabel);
+        ScoreBoard.prototype.AddTotalDestroyedLabel = function (currentScene) {
+            currentScene.addChild(this._totalDestroyedLabel);
         };
         ScoreBoard.prototype.Reset = function (livesNum, scoreNum) {
             if (livesNum === void 0) { livesNum = 5; }
             if (scoreNum === void 0) { scoreNum = 0; }
             this.Lives = livesNum;
-            this.Score = scoreNum;
+            this.Destroyed = scoreNum;
         };
         return ScoreBoard;
     }());

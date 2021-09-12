@@ -19,7 +19,7 @@ var managers;
                         case "coin":
                             var yaySound = createjs.Sound.play("yaySound");
                             yaySound.volume = 0.1;
-                            managers.Game.scoreBoard.Score += 100;
+                            managers.Game.scoreBoard.Destroyed += 100;
                             object2.alpha = 0;
                             break;
                         case "asteroid":
@@ -30,19 +30,18 @@ var managers;
                             break;
                         case "enemy":
                             if (object1.name == "phaser") {
+                                // if the enemy is colliding with the phaser: 1. Play explosion sound, 2. Increment enemies destroyed, 3. Check on mission status,
                                 var explosionSound_1 = createjs.Sound.play("explosionSound");
                                 explosionSound_1.volume = 0.1;
-                                managers.Game.scoreBoard.Score += 100;
+                                managers.Game.scoreBoard.Destroyed += 1;
                                 managers.Mission.enemiesDestroyed += 1;
                                 managers.Mission.Check();
                                 Collision.createExplosion(object2);
                                 object2.Reset();
                                 object1.Reset();
-                                console.log({
-                                    enemiesDestroyed: managers.Mission.enemiesDestroyed,
-                                });
                             }
                             else {
+                                //
                                 var explosionSound_2 = createjs.Sound.play("explosionSound");
                                 explosionSound_2.volume = 0.1;
                                 managers.Game.scoreBoard.Lives -= 1;
@@ -59,10 +58,10 @@ var managers;
                     }
                     if (managers.Game.scoreBoard.Lives <= 0) {
                         managers.Game.currentState = config.Scene.OVER;
-                        if (managers.Game.scoreBoard.HighScore <=
-                            managers.Game.scoreBoard.Score) {
-                            managers.Game.scoreBoard.HighScore =
-                                managers.Game.scoreBoard.Score;
+                        if (managers.Game.scoreBoard.TotalDestroyed <=
+                            managers.Game.scoreBoard.Destroyed) {
+                            managers.Game.scoreBoard.TotalDestroyed =
+                                managers.Game.scoreBoard.Destroyed;
                         }
                     }
                 }

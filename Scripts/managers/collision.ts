@@ -27,7 +27,7 @@ module managers {
             case "coin":
               let yaySound = createjs.Sound.play("yaySound");
               yaySound.volume = 0.1;
-              managers.Game.scoreBoard.Score += 100;
+              managers.Game.scoreBoard.Destroyed += 100;
               object2.alpha = 0;
               break;
             case "asteroid":
@@ -40,18 +40,17 @@ module managers {
               break;
             case "enemy":
               if (object1.name == "phaser") {
+                // if the enemy is colliding with the phaser: 1. Play explosion sound, 2. Increment enemies destroyed, 3. Check on mission status,
                 let explosionSound = createjs.Sound.play("explosionSound");
                 explosionSound.volume = 0.1;
-                managers.Game.scoreBoard.Score += 100;
+                managers.Game.scoreBoard.Destroyed += 1;
                 managers.Mission.enemiesDestroyed += 1;
                 managers.Mission.Check();
                 Collision.createExplosion(object2);
                 object2.Reset();
                 object1.Reset();
-                console.log({
-                  enemiesDestroyed: managers.Mission.enemiesDestroyed,
-                });
               } else {
+                //
                 let explosionSound = createjs.Sound.play("explosionSound");
                 explosionSound.volume = 0.1;
                 managers.Game.scoreBoard.Lives -= 1;
@@ -73,11 +72,11 @@ module managers {
           if (managers.Game.scoreBoard.Lives <= 0) {
             managers.Game.currentState = config.Scene.OVER;
             if (
-              managers.Game.scoreBoard.HighScore <=
-              managers.Game.scoreBoard.Score
+              managers.Game.scoreBoard.TotalDestroyed <=
+              managers.Game.scoreBoard.Destroyed
             ) {
-              managers.Game.scoreBoard.HighScore =
-                managers.Game.scoreBoard.Score;
+              managers.Game.scoreBoard.TotalDestroyed =
+                managers.Game.scoreBoard.Destroyed;
             }
           }
         }

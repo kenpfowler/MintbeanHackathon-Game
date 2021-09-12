@@ -93,7 +93,7 @@ namespace scenes {
         managers.Game.scoreBoard.Reset();
       });
 
-      managers.Game.scoreBoard.AddHighScore(this);
+      managers.Game.scoreBoard.AddTotalDestroyedLabel(this);
     }
   }
 }

@@ -70,7 +70,7 @@ var scenes;
                 managers.Mission.Reset();
                 managers.Game.scoreBoard.Reset();
             });
-            managers.Game.scoreBoard.AddHighScore(this);
+            managers.Game.scoreBoard.AddTotalDestroyedLabel(this);
         };
         return Over;
     }(objects.Scene));

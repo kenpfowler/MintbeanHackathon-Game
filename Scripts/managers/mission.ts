@@ -16,9 +16,11 @@ module managers {
       if (this.enemiesDestroyed >= this.mission1Objective) {
         managers.Game.currentState = config.Scene.OVER;
         if (
-          managers.Game.scoreBoard.HighScore <= managers.Game.scoreBoard.Score
+          managers.Game.scoreBoard.TotalDestroyed <=
+          managers.Game.scoreBoard.Destroyed
         ) {
-          managers.Game.scoreBoard.HighScore = managers.Game.scoreBoard.Score;
+          managers.Game.scoreBoard.TotalDestroyed =
+            managers.Game.scoreBoard.Destroyed;
         }
       }
     }
