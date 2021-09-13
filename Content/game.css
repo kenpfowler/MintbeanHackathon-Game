@@ -106,6 +106,7 @@ input[type="reset"] {
 }
 
 .btn {
+  margin: 10px 0;
   text-align: center;
   text-transform: uppercase;
   width: 250px;
