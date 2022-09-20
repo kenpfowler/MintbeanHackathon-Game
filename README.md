@@ -2,7 +2,7 @@
 
 ### To PLAY visit:
 
-[Sentinel@github.io](https://kenpfowler.github.io/)
+[sentinel@github.io](https://kenpfowler.github.io/)
 
 ### To DEVELOP the Sentinel project:
 
